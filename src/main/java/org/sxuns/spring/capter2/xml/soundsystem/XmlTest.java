@@ -21,4 +21,10 @@ public class XmlTest {
         CompactDisc bean = ctx.getBean(CompactDisc.class);
         bean.play();
     }
+    @Test
+    public void test2(){
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("springConfig.xml");
+        CDPlayerNew compactDiscNew = ctx.getBean("compactDiscNew", CDPlayerNew.class);
+        compactDiscNew.play();
+    }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:c="http://www.springframework.org/schema/c" xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!--<bean id="compactDisc" class="org.sxuns.spring.capter2.xml.soundsystem.SgtPeppers"/>-->
@@ -14,7 +14,19 @@
     <!--<bean id="compactDisc" class="org.sxuns.spring.capter2.xml.soundsystem.BlankDisc"-->
           <!--c:artist="谢春花" c:title="童话镇"/>-->
     <bean id="compactDisc" class="org.sxuns.spring.capter2.xml.soundsystem.BlankDisc">
-        <constructor-arg name="artist" value="贝多芬"/>
-        <constructor-arg index="0" value="月光曲"/>
+        <property name="artist" value="谢春花"/>
+        <property name="title" value="上海演唱会"/>
+        <property name="tracks">
+            <list>
+                <value>童话镇</value>
+                <value>外婆家</value>
+                <value>不知道了</value>
+            </list>
+        </property>
     </bean>
+    <!--<bean id="compactDiscNew" class="org.sxuns.spring.capter2.xml.soundsystem.CDPlayerNew">-->
+        <!--<property name="compactDisc" ref="compactDisc"/>-->
+    <!--</bean>-->
+    <bean id="compactDiscNew" class="org.sxuns.spring.capter2.xml.soundsystem.CDPlayerNew"
+          p:compactDisc-ref="compactDisc"/>
 </beans>
