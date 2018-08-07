@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="org.sxuns.spring.capter2.mix.soundsystem.SoundSystemConfig"/>
+    <bean class="org.sxuns.spring.capter2.mix.soundsystem.CDPlayerConfig"/>
+    <bean class="org.sxuns.spring.capter2.mix.soundsystem.CDConfig"/>
+    <bean id="compactDisc" class="org.sxuns.spring.capter2.mix.soundsystem.BlankDisc"
+          p:artist="贝多芬" p:title="演唱会">
+        <property name="tracks">
+            <list>
+                <value>月光曲</value>
+                <value>第三交响曲</value>
+                <value>第五交响曲</value>
+            </list>
+        </property>
+    </bean>
+</beans>
