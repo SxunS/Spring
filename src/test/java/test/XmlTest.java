@@ -1,4 +1,4 @@
-package org.sxuns.spring.capter2.xml.soundsystem;
+package test;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -6,6 +6,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.sxuns.spring.capter2.xml.soundsystem.CDPlayerNew;
+import org.sxuns.spring.capter2.xml.soundsystem.CompactDisc;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:springConfig.xml")
 public class XmlTest {
