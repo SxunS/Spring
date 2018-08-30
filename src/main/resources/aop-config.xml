@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <bean id="performanceImp" class="org.sxuns.spring.capter4.concert.PerformanceImp"/>
     <bean id="audience" class="org.sxuns.spring.capter4.concert.Audience"/>
+    <bean id="compactDisc" class="org.sxuns.spring.capter2.mix.soundsystem.BlankDisc"
+          p:artist="贝多芬" p:title="演唱会">
+        <property name="tracks">
+            <list>
+                <value>月光曲</value>
+                <value>第三交响曲</value>
+                <value>第五交响曲</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="countTrack" class="org.sxuns.spring.capter4.concert.CountTrack"/>
+    <aop:aspectj-autoproxy/>
     <aop:config>
         <aop:aspect ref="audience">
             <aop:pointcut id="performance" expression="execution( * org.sxuns.spring.capter4.concert.Performance.perform(..))"/>
@@ -12,6 +25,12 @@
             <aop:before method="silenceCellPhones" pointcut-ref="performance"/>
             <aop:after-returning method="applause" pointcut-ref="performance"/>
             <aop:after-throwing method="demandRefund" pointcut-ref="performance"/>
+            <aop:around method="watchPerformance" pointcut-ref="performance"/>
+        </aop:aspect>
+        <aop:aspect ref="countTrack">
+            <aop:pointcut id="playTrack"
+                          expression="execution( * org.sxuns.spring.capter2.mix.soundsystem.CompactDisc.playTrack(int)) and args(track)"/>
+            <aop:after-returning pointcut-ref="playTrack" method="count" arg-names="track"/>
         </aop:aspect>
     </aop:config>
 </beans>
