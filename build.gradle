@@ -42,4 +42,15 @@ dependencies {
     compile group: 'javax.servlet', name: 'jstl', version: '1.2'
 // https://mvnrepository.com/artifact/org.springframework/spring-test
     testCompile group: 'org.springframework', name: 'spring-test', version: '4.3.18.RELEASE'
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8'
+// https://mvnrepository.com/artifact/org.springframework/spring-mock
+    testCompile group: 'org.springframework', name: 'spring-mock', version: '2.0.8'
+// https://mvnrepository.com/artifact/org.mockito/mockito-core
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.21.0'
+// https://mvnrepository.com/artifact/org.hibernate/hibernate-validator
+    compile group: 'org.hibernate', name: 'hibernate-validator', version: '6.0.10.Final'
+// https://mvnrepository.com/artifact/javax.el/javax.el-api
+    compile group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
+
 }

@@ -1,8 +1,10 @@
 package org.sxuns.spring.capter5.spitter.config;
 
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -29,6 +31,18 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         resolver.setSuffix(".jsp");
         resolver.setExposeContextBeansAsAttributes(true);
         return resolver;
+    }
+
+    /**
+     * 配置参数验证API
+     *
+     */
+    @Bean
+    public MessageSource messageSource(){
+        ReloadableResourceBundleMessageSource reloadableResourceBundleMessageSource = new ReloadableResourceBundleMessageSource();
+        reloadableResourceBundleMessageSource.setBasename("classpath:messages_zh_CN");
+        reloadableResourceBundleMessageSource.setCacheSeconds(10);
+        return reloadableResourceBundleMessageSource;
     }
 
     //配置静态资源处理
