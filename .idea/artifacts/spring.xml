@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="spring">
+    <output-path>$PROJECT_DIR$/out/artifacts/spring</output-path>
+    <root id="root">
+      <element id="archive" name="spring.jar">
+        <element id="module-output" name="spring" />
+      </element>
+      <element id="artifact" artifact-name="Gradle : org.sxuns : spring-1.0-SNAPSHOT.war (exploded)" />
+    </root>
+  </artifact>
+</component>
