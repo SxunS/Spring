@@ -52,5 +52,17 @@ dependencies {
     compile group: 'org.hibernate', name: 'hibernate-validator', version: '6.0.10.Final'
 // https://mvnrepository.com/artifact/javax.el/javax.el-api
     compile group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
+// https://mvnrepository.com/artifact/org.apache.tiles/tiles-jsp
+    compile group: 'org.apache.tiles', name: 'tiles-jsp', version: '3.0.8'
+// https://mvnrepository.com/artifact/org.apache.tiles/tiles-core
+    compile group: 'org.apache.tiles', name: 'tiles-core', version: '3.0.8'
+// https://mvnrepository.com/artifact/org.apache.tiles/tiles-api
+    compile group: 'org.apache.tiles', name: 'tiles-api', version: '3.0.8'
+// https://mvnrepository.com/artifact/org.apache.tiles/tiles-servlet
+    compile group: 'org.apache.tiles', name: 'tiles-servlet', version: '3.0.8'
+// https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf-spring4
+    compile group: 'org.thymeleaf', name: 'thymeleaf-spring4', version: '3.0.9.RELEASE'
+// https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf
+    compile group: 'org.thymeleaf', name: 'thymeleaf', version: '3.0.9.RELEASE'
 
 }

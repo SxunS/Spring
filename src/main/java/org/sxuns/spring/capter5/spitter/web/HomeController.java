@@ -4,11 +4,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+/**
+ * @author s_xun
+ */
 @Controller
-@RequestMapping({"/","/homePage"})
 public class HomeController {
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/homePage",method = RequestMethod.GET)
     public String home(){
-        return "home";
+        return "homeTiles";
+    }
+    @RequestMapping("/thymeleafHome")
+    public String thymeleafHome(){
+        return "thymeleafHome";
     }
 }
