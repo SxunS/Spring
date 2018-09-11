@@ -5,12 +5,12 @@ import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.sxuns.spring.capter5.spitter.data.SpittleRepository;
+import org.sxuns.spring.capter5.spitter.domain.Spittle;
+import org.sxuns.spring.capter5.spitter.exception.DuplicateSpittleException;
+import org.sxuns.spring.capter5.spitter.exception.SpittleNotFoundException;
 import org.sxuns.spring.capter5.spitter.vo.Spitter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -47,6 +47,16 @@ public class SpittleController {
         return "thymeleafRegisterForm";
     }
 
+    /**
+     *  注册
+     * @param profilePicture
+     * @param spitter
+     * @param errors
+     * @param model
+     * @param request
+     * @return
+     * @throws IOException
+     */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String processRegisteration(@RequestParam("profilePicture") MultipartFile profilePicture, @Valid Spitter spitter, Errors errors, Model model, HttpServletRequest request) throws IOException {
         if (errors.hasErrors()){
@@ -57,6 +67,20 @@ public class SpittleController {
         File file = new File(profilePicture.getOriginalFilename());
         profilePicture.transferTo(file);
         spittleRepository.save(spitter);
-        return "redirect:/spitter/" + spitter.getUserName();
+        return "redirect:/spitter/" + spitter.getId();
     }
+
+    /**
+     * 查询单个
+     */
+    @RequestMapping(value = "/spitter/{spittleID}",method = RequestMethod.GET)
+    public String spittle(@PathVariable("spittleID") Long spittleID,Model model){
+        Spittle spittle = spittleRepository.findOne(spittleID);
+        if (spittle == null) {
+            throw  new SpittleNotFoundException();
+        }
+        model.addAttribute(spittle);
+        return "spittle";
+    }
+
 }
